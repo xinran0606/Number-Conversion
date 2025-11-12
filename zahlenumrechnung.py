@@ -1,5 +1,15 @@
-def DezimalZuBinaer(n):
+import re
+
+def DezimalZuBinaer():
     """Funktion, mit der man Dezimal zu Binärzahl umzuwandeln kann."""
+    while True:
+        number = input("Bitte geben Sie eine Integer: ")
+        try:
+            n = int(number)
+            break
+        except ValueError:
+            print("Falsche Eingabe. Bitte geben Sie eine Integer.")
+
     if n == 0:
         return 0
     else:
@@ -12,8 +22,16 @@ def DezimalZuBinaer(n):
         text = ''.join(binaer)
         return text
 
-def DezimalZuHexadezimal(n):
+def DezimalZuHexadezimal():
     """Funktion, mit der man Dezimal zu Hexadezimal umwandeln kann"""
+    while True:
+        number = input("Bitte geben Sie eine Integer: ")
+        try:
+            n = int(number)
+            break
+        except ValueError:
+            print("Falsche Eingabe. Bitte geben Sie eine Integer.")
+
     if n == 0:
         return 0
     else:
@@ -40,8 +58,16 @@ def DezimalZuHexadezimal(n):
         text = ''.join(hex)
         return text
 
-def DezimalZuOktal(n):
+def DezimalZuOktal():
     """Funktion, mit der man von Dezimal zu Oktal umwandeln kann."""
+    while True:
+        number = input("Bitte geben Sie eine Integer: ")
+        try:
+            n = int(number)
+            break
+        except ValueError:
+            print("Falsche Eingabe. Bitte geben Sie eine Integer.")
+
     if n == 0:
         return 0
     else:
@@ -54,8 +80,16 @@ def DezimalZuOktal(n):
         text = ''.join(okt)
         return text
 
-def BinaerZuDezimal(n):
+def BinaerZuDezimal():
     """Funktion, mit der man Binär in Dezimal umwandeln kann."""
+    while True:
+        n = input("Bitte geben Sie eine Binäre Zahl ein: ")
+        if re.fullmatch(r'[01]+', n):
+            print("Gültige Eingabe:", n)
+            break
+        else:
+            print("Ungültige Eingabe! Bitte nur 0 oder 1 eingeben.")
+
     if n == 0:
         return 0
     else:
@@ -69,8 +103,16 @@ def BinaerZuDezimal(n):
             ergibnis += sumNow
         return ergibnis
 
-def HexZuDezimal(n):
+def HexZuDezimal():
     "Funktion, mit der man Hexadezimal in Dezimal umwandeln kann."
+    while True:
+        n = input("Bitte geben Sie eine Hexadezimalzahl ein: ")
+        if re.fullmatch(r'[0-9A-F]+', n):
+            print("Gültige Eingabe:", n)
+            break
+        else:
+            print("Ungültige Eingabe! Bitte nur 0-9 und A-F eingeben.")
+
     if n == 0:
         return 0
     else:
@@ -90,7 +132,7 @@ def HexZuDezimal(n):
                     newHexList.append(14)
                 case 'F':
                     newHexList.append(15)
-                case '1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9':
+                case '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9':
                     newHexList.append(int(i))
         newHexList.reverse()
         ergibnis = 0
@@ -101,8 +143,16 @@ def HexZuDezimal(n):
             ergibnis += sumNow
         return ergibnis
 
-def OktalZuDezimal(n):
+def OktalZuDezimal():
     "Funktion, mit der man Oktal in Dezimal umwandeln kann."
+    while True:
+        n = input("Bitte geben Sie eine Oktaldarstellung ein: ")
+        if re.fullmatch(r'[0-7]+', n):
+            print("Gültige Eingabe:", n)
+            break
+        else:
+            print("Ungültige Eingabe! Bitte nur 0-7 eingeben.")
+
     if n == 0:
         return 0
     else:
@@ -116,3 +166,34 @@ def OktalZuDezimal(n):
             ergibnis += sumNow
         return ergibnis
 
+if __name__ == "__main__":
+    print("Taschenrechner startet.")
+    print("------------------------------------------------------------")
+    print("1: Dezimal zu Binär\n" 
+          "2: Dezimal zu Hexadezimal\n" 
+          "3: Dezimal zu Oktal\n"
+          "4: Binär zu Dezimal\n"
+          "5: Hexadezimal zu Dezimal\n"
+          "6: Oktal zu Dezimal\n")
+    while True:
+        n = int(input("Bitte geben Sie an, welche modul SIe anwenden wollen:"))
+        if n == 1:
+            print(DezimalZuBinaer())
+            break
+        elif n == 2:
+            print(DezimalZuHexadezimal())
+            break
+        elif n == 3:
+            print(DezimalZuOktal())
+            break
+        elif n == 4:
+            print(BinaerZuDezimal())
+            break
+        elif n == 5:
+            print(HexZuDezimal())
+            break
+        elif n == 6:
+            print(OktalZuDezimal())
+            break
+        else:
+            print("Ungültige Eingabe! Bitte nur 1-6 eingeben.")
